@@ -8,7 +8,7 @@ try:
     t_df=pd.read_csv('data/raw/transactions.csv') #transactions data
     print(f'Succesfully read data: Users {user_df.shape}, transactions: {t_df.shape}')
 except Exception as e:
-    print('Error loading the data {e}')
+    print(f'Error loading the data {e}')
 
 
 
@@ -36,7 +36,8 @@ t_df["is_high_amount"] = (t_df["amount_gbp"] > threshold).astype(int)
 
 # cities changed feature
 t_df["prev_city"] = t_df.groupby("user_id")["city"].shift(1)
-t_df["city_changed"] = (t_df["prev_city"] != t_df["city"]).astype(int)
+t_df["city_changed"] = ((t_df["prev_city"].notna()) & (t_df["prev_city"] != t_df["city"])).astype(int)
+
 
 # velocity feature
 t_df["time_bucket"] = t_df["timestamp"].dt.floor("10min")
@@ -63,13 +64,13 @@ t_df["risk_band"] = pd.cut(
 )
 
 # Save processed data
-t_df.to_csv("data/processed/transactions_features.csv", index=False)
+t_df.to_csv("data/processed/transaction_features.csv", index=False)
 
-conn = sqlite3.connect("data/raw/risk_project.db")  # reuse same DB file
-t_df.to_sql("transactions_features", conn, if_exists="replace", index=False)
+conn = sqlite3.connect("data/raw/risk_project.db")  
+t_df.to_sql("transaction_features", conn, if_exists="replace", index=False)
 conn.close()
 
-print("Saved transactions_features to SQLite as table: transactions_features")
+print("Saved transaction_features to SQLite as table: transaction_features")
 
 
 print(t_df[["is_anomaly", "risk_score"]].groupby("is_anomaly").mean())
