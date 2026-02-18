@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sqlite3
 
 
 try:
@@ -63,5 +64,12 @@ t_df["risk_band"] = pd.cut(
 
 # Save processed data
 t_df.to_csv("data/processed/transactions_features.csv", index=False)
+
+conn = sqlite3.connect("data/raw/risk_project.db")  # reuse same DB file
+t_df.to_sql("transactions_features", conn, if_exists="replace", index=False)
+conn.close()
+
+print("Saved transactions_features to SQLite as table: transactions_features")
+
 
 print(t_df[["is_anomaly", "risk_score"]].groupby("is_anomaly").mean())

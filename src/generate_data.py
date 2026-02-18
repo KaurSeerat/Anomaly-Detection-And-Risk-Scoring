@@ -93,7 +93,7 @@ users = pd.DataFrame({
 })
 
 # -----------------------------
-# 4) CREATE TRANSACTIONS TABLE (mostly normal)
+# CREATE TRANSACTIONS TABLE 
 # -----------------------------
 tx_rows = []
 tx_id_counter = 0
@@ -171,7 +171,7 @@ transactions["timestamp"] = pd.to_datetime(transactions["timestamp"])
 transactions = transactions.sort_values(["user_id", "timestamp"]).reset_index(drop=True)
 
 # -----------------------------
-# 5) INJECT ANOMALIES (simple patterns)
+# INJECT ANOMALIES 
 # -----------------------------
 def inject_high_value(tx_df, idx, users_df):
     uid = tx_df.at[idx, "user_id"]
@@ -255,7 +255,7 @@ if extra_rows:
 transactions = transactions.sort_values(["user_id", "timestamp"]).reset_index(drop=True)
 
 # -----------------------------
-# 6) SAVE CSV + SQLITE
+# SAVE CSV + SQLITE
 # -----------------------------
 users.to_csv("data/raw/users.csv", index=False)
 transactions.to_csv("data/raw/transactions.csv", index=False)
