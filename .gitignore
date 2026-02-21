@@ -1,0 +1,8 @@
+.vscode
+# VS Code workspace settings
+.vscode/
+.vscode/*
+
+# Power BI files
+*.pbix
+powerBI/*.pbix
