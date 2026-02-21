@@ -88,11 +88,12 @@ Behavioural signals were engineered to support risk scoring:
 
 ### Risk Score Formula
 A rule-based score combines behavioural signals:
-risk_score =
-(is_high_amount * 3)
-(is_night_tx * 2)
-(city_changed * 2)
-(tx_count_10min >= 3) * 3
+
+**risk_score =** 
+- **(is_high_amount × 3)** + 
+- **(is_night_tx × 2)** + 
+- **(city_changed × 2)** + 
+- **((tx_count_10min ≥ 3) × 3)**
 
 
 Risk bands:
@@ -163,28 +164,25 @@ The notebook focuses on validation and exploratory analysis — not machine lear
 - Risk scoring can effectively prioritise investigation workload.
 
 ## 📁 Repository Structure
+```
 data/
-  raw/
-     users.csv
-     transactions.csv
-     risk_project.db
-  processed/
-     transaction_features.csv
-
+├── raw/
+│   ├── users.csv
+│   ├── transactions.csv
+│   └── risk_project.db
+├── processed/
+│   └── transaction_features.csv
 notebooks/
-  analysis.ipynb
-
+└── analysis.ipynb
 sql/
-  queries.sql
-
+└── queries.sql
 powerbi/
-  screenshots/
-
+└── screenshots/
 src/
-  generate_data.py
-  feature_engineering.py
-
+├── generate_data.py
+└── feature_engineering.py
 README.md
+```
 
 
 ## 🛠 Tools Used
