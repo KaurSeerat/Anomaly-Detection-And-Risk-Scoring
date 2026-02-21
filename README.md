@@ -174,13 +174,14 @@ data/
 │   └── transaction_features.csv
 notebooks/
 └── analysis.ipynb
-sql/
-└── queries.sql
+sql_results/
+└──images/
 powerbi/
 └── screenshots/
 src/
 ├── generate_data.py
 └── feature_engineering.py
+└── queries.sql
 README.md
 ```
 
