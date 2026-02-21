@@ -164,25 +164,25 @@ The notebook focuses on validation and exploratory analysis — not machine lear
 
 ## 📁 Repository Structure
 data/
-raw/
-users.csv
-transactions.csv
-risk_project.db
-processed/
-transaction_features.csv
+  raw/
+     users.csv
+     transactions.csv
+     risk_project.db
+  processed/
+     transaction_features.csv
 
 notebooks/
-analysis.ipynb
+  analysis.ipynb
 
 sql/
-queries.sql
+  queries.sql
 
 powerbi/
-screenshots/
+  screenshots/
 
 src/
-generate_data.py
-feature_engineering.py
+  generate_data.py
+  feature_engineering.py
 
 README.md
 
