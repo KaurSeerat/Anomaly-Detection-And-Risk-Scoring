@@ -1,4 +1,5 @@
  # Anomaly Detection & Risk Scoring on Synthetic Transaction Data
+Built an end-to-end fraud monitoring analytics project using SQL, Python, SQLite, and Power BI on 40,000+ synthetic UK banking transactions. I engineered behavioural risk indicators, investigated suspicious patterns with SQL window functions, and developed an interactive dashboard to help prioritise high-risk activity for analyst review. The project simulates how a junior data analyst could support fraud operations with KPI reporting, anomaly investigation, and decision-ready insight.
 
 ## 📌 Business Problem
 
