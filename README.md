@@ -1,22 +1,13 @@
- # Anomaly Detection & Risk Scoring on Synthetic Transaction Data
-Built an end-to-end fraud monitoring analytics project using SQL, Python, SQLite, and Power BI on 40,000+ synthetic UK banking transactions. I engineered behavioural risk indicators, investigated suspicious patterns with SQL window functions, and developed an interactive dashboard to help prioritise high-risk activity for analyst review. The project simulates how a junior data analyst could support fraud operations with KPI reporting, anomaly investigation, and decision-ready insight.
+# Fraud Analytics - Anomaly Detection & Risk Scoring
+A transaction monitoring pipeline on 40,000+ synthetic UK banking records. Covers synthetic data generation with realistic fraud patterns, behavioural feature engineering, SQL investigation using window functions, and a Power BI dashboard built for analyst triage.
+
+This is not a machine learning project. It's closer to how fraud analytics actually works in early-stage or mid-size operations, rule-based risk scoring, SQL investigation, and a dashboard that helps someone decide where to focus attention.
 
 ## 📌 Business Problem
 
-Financial institutions and digital platforms process thousands of transactions daily. Identifying suspicious or anomalous behaviour early is critical for:
+Financial platforms process thousands of transactions a day. The challenge isn't detecting fraud with perfect accuracy, it's giving an analyst a prioritised list of activity worth investigating, without drowning them in false positives.
 
-- Fraud prevention
-- Operational risk monitoring
-- Customer protection
-- Reducing financial losses
-
-This project simulates a real-world transaction monitoring system by generating synthetic behavioural data and building a rule-based risk scoring framework to detect anomalous activity.
-
-The goal is not just to flag anomalies, but to demonstrate how an analyst would:
-- Engineer behavioural risk signals
-- Validate their effectiveness
-- Investigate patterns using SQL
-- Communicate insights through dashboards
+This project builds that prioritisation layer.
 
 ## 🧱 Project Overview
 
@@ -250,21 +241,20 @@ Key findings from the validation notebook:
 - Rule-based thresholds are conservative — medium band occasionally outperforms high band, flagging threshold calibration as a next step
 
 ---
+## ⚠ Limitations
+
+- Synthetic data doesn't capture real fraud complexity — no merchant risk signals, no device fingerprinting, no account age dynamics
+- Risk thresholds were set by intuition, not precision/recall analysis
+- Velocity feature uses a fixed 10-minute bucket approximation rather than a true rolling window
+  
+---
 
 ## 🚀 Next Steps
 
-- [ ] Add logistic regression comparison — validate whether engineered features support a predictive model as well as a rule-based one
-- [ ] Calibrate risk band thresholds using precision/recall analysis
-- [ ] Add rolling 10-minute window velocity (more accurate than fixed bucket)
-- [ ] Introduce additional signals: merchant risk, device fingerprinting
-
----
-
-## ⚠ Limitations
-
-- Synthetic data does not capture full real-world fraud complexity
-- Risk score thresholds are rule-based, not statistically optimised
-- Velocity uses a fixed 10-minute bucket approximation
+- Calibrate thresholds using precision/recall curves
+- Implement proper rolling 10-minute velocity window
+- Baseline logistic regression model to compare against rule-based scoring
+- Add merchant-level risk signals
 
 ---
 
